@@ -9,13 +9,13 @@ public class LoginPage {
     private WebDriver driver;
 
     //Поле Email
-    private By emailField = By.xpath(".//label[text()='Email']");
+    private By emailField = By.xpath(".//label[text()='Email']/../input[@name='name']");
 
     //Поле Пароль
-    private By passwordField = By.xpath(".//label[text()='Пароль']");
+    private By passwordField = By.xpath(".//label[text()='Пароль']/../input[@name='Пароль']");
 
     //Кнопка Войти
-    private By buttonLogin = By.className("button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa");
+    private By buttonLogin = By.xpath(".//button[text()='Войти']");
 
 
     //Заголовок Вход

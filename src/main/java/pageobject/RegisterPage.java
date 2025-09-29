@@ -11,25 +11,25 @@ public class RegisterPage {
     private WebDriver driver;
 
     //Поле Имя
-    private By nameField = By.xpath(".//label[text()='Имя']");
+    private By nameField = By.xpath(".//label[text()='Имя']/../input[@name='name']");
 
     //Поле Email
-    private By emailField = By.xpath(".//label[text()='Email']");
+    private By emailField = By.xpath(".//label[text()='Email']/../input[@name='name']");
 
     //Поле Пароль
-    private By passwordField = By.xpath(".//label[text()='Пароль']");
+    private By passwordField = By.xpath(".//label[text()='Пароль']/../input[@name='Пароль']");
 
     //Кнопка зарегистрироваться
-    private By buttonRegister = By.className("button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa");
+    private By buttonRegister = By.xpath("//button[text()='Зарегистрироваться']");
 
     //Заголовок Регистрация
     private By headerRegister = By.xpath(".//h2[text()='Регистрация']");
 
     //Сообщение об ошибке
-    private By errorPasswordMessage = By.className("input__error text_type_main-default");
+    private By errorPasswordMessage = By.xpath(".//p[text()='Некорректный пароль']");
 
     //Кнопка "Войти" на странице регистрации
-    private By buttonLoginFromRegisterPage = By.className("Auth_link__1fOlj");
+    private By buttonLoginFromRegisterPage = By.xpath(".//a[text()='Войти']");
 
 
 
@@ -68,7 +68,7 @@ public class RegisterPage {
 
     //Ожидание загрузки страницы Регистрации
     public void waitForLoadRegisterPage(){
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(headerRegister));
     }
 
@@ -79,7 +79,7 @@ public class RegisterPage {
     }
 
     //Получение текста ошибки "Некорректный пароль"
-    public String getHeaderBurgerText(){
+    public String getErrorMessageText(){
         String text = driver.findElement(errorPasswordMessage).getText();
         return text;
     }
