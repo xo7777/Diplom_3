@@ -1,6 +1,8 @@
 import api.User;
 import api.UserRequest;
 import constants.DataTestGenerate;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -44,14 +46,14 @@ public class LoginWithDifferentButtonTest {
         objLoginPage = new LoginPage(driver);
         objRegisterPage = new RegisterPage(driver);
         objMainPage = new MainPage(driver);
-
         objMainPage.openBurgerSite();
         objMainPage.waitForLoadMainPage();
     }
 
 
-    //вход по кнопке «Войти в аккаунт» на главной;
     @Test
+    @DisplayName("Вход по кнопке «Войти в аккаунт» на главной странице")
+    @Description("Успешный вход с главной страницы")
     public void loginWithButtonOnMainPage() {
         objMainPage.buttonLoginMainPageClick();
         objLoginPage.loginUser(email, password);
@@ -60,8 +62,9 @@ public class LoginWithDifferentButtonTest {
         assertEquals(TEXT_HEADER_BURGER, actualResult);
     }
 
-    //вход через кнопку «Личный кабинет»;
     @Test
+    @DisplayName("Вход через кнопку «Личный кабинет» на главной странице")
+    @Description("Успешный вход через кнопку «Личный кабинет»")
     public void loginWithButtonPersonalAccount() {
         objMainPage.buttonPersonalAccountClick();
         objLoginPage.loginUser(email, password);
@@ -70,8 +73,9 @@ public class LoginWithDifferentButtonTest {
         assertEquals(TEXT_HEADER_BURGER, actualResult);
     }
 
-    //вход через кнопку в форме регистрации;
     @Test
+    @DisplayName("Вход через кнопку Войти в форме регистрации")
+    @Description("Успешный вход через кнопку Войти в форме регистрации")
     public void loginWithButtonOnRegisterPage() {
         objRegisterPage.openRegisterBurgerSite();
         objRegisterPage.waitForLoadRegisterPage();
@@ -82,9 +86,9 @@ public class LoginWithDifferentButtonTest {
         assertEquals(TEXT_HEADER_BURGER, actualResult);
     }
 
-
-    //вход через кнопку в форме восстановления пароля.
     @Test
+    @DisplayName("Вход через кнопку Войти форме восстановления пароля")
+    @Description("Успешный вход через кнопку Войти в восстановления пароля")
     public void loginWithButtonOnForgotPasswordPage() {
         objForgotPasswordPage = new ForgotPasswordPage(driver);
         objForgotPasswordPage.openForgotPasswordPage();

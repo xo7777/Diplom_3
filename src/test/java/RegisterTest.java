@@ -1,4 +1,6 @@
 import constants.DataTestGenerate;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,6 +41,8 @@ public class RegisterTest {
     }
 
     @Test
+    @DisplayName("Регистрация пользователя")
+    @Description("Успешная регистрация пользователя с валидными значениями")
     public void registerTest() {
         objRegisterPage.waitForLoadRegisterPage();
         objRegisterPage.setName(name);
@@ -55,6 +59,8 @@ public class RegisterTest {
     }
 
     @Test
+    @DisplayName("Регистрация пользователя с некорректным паролем")
+    @Description("Ошибка Некорректнвй пароль при вводе пароля менее 6 символов")
     public void errorMessagePasswordTest() {
         objRegisterPage.waitForLoadRegisterPage();
         password = "12345";

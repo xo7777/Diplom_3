@@ -1,5 +1,6 @@
 package pageobject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,25 +18,24 @@ public class ForgotPasswordPage {
     private By headerPasswordRecovery = By.xpath(".//h2[text()='Восстановление пароля']");
 
 
-    //Конструктор
     public ForgotPasswordPage(WebDriver driver) {
         this.driver = driver;
     }
 
 
-    //Вход на страницу восстановления пароля
+    @Step("Вход на страницу восстановления пароля")
     public void openForgotPasswordPage() {
         driver.get(URL_FORGOT_PASSWORD);
     }
 
 
-    //Клик по кнопке "Войти" на странице "Забыли пароль"
+    @Step ("Клик по кнопке Войти на странице Забыли пароль")
     public void buttonLoginFromForgotPasswordPageClick() {
         driver.findElement(buttonLoginFromForgotPasswordPage).click();
     }
 
 
-    //Ожидание загрузки страницы восстановления пароля
+    @Step ("Ожидание загрузки страницы восстановления пароля")
     public void waitForLoadForgotPasswordPage() {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.visibilityOfElementLocated(headerPasswordRecovery));

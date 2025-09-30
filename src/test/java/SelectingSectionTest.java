@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,9 +23,9 @@ public class SelectingSectionTest {
         objMainPage.waitForLoadMainPage();
     }
 
-
-    //Тест на выбор раздела Булки
     @Test
+    @DisplayName("Выбор раздела Булки")
+    @Description("Раздел Булки успешно выбирается")
     public void selectBunTest() {
         objMainPage.buttonFillingClick();
         objMainPage.buttonBunClick();
@@ -31,16 +33,18 @@ public class SelectingSectionTest {
         assertEquals(NAME_BUN, actualResult);
     }
 
-    //Тест на выбор раздела Соусы
     @Test
+    @DisplayName("Выбор раздела Соусы")
+    @Description("Раздел Соусы успешно выбирается")
     public void selectSauceTest() {
         objMainPage.buttonSauceClick();
         String actualResult = objMainPage.getTextActiveSection();
         assertEquals(NAME_SAUCE, actualResult);
     }
 
-    //Тест на выбор раздела Начинки
     @Test
+    @DisplayName("Выбор раздела Начинки")
+    @Description("Раздел Начинки успешно выбирается")
     public void selectFillingTest() {
         objMainPage.buttonFillingClick();
         String actualResult = objMainPage.getTextActiveSection();
