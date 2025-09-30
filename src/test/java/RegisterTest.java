@@ -25,7 +25,7 @@ public class RegisterTest {
 
 
     @Before
-    public void setUp(){
+    public void setUp() {
         driver = new ChromeDriver();
         dataTestGenerate = new DataTestGenerate();
         name = dataTestGenerate.generateName();
@@ -38,24 +38,24 @@ public class RegisterTest {
 
     }
 
-@Test
-public void registerTest(){
-objRegisterPage.waitForLoadRegisterPage();
-objRegisterPage.setName(name);
-objRegisterPage.setEmail(email);
-objRegisterPage.setPassword(password);
-objRegisterPage.buttonRegisterClick();
-objLoginPage.waitForLoadEntrancePage();
-objLoginPage.setEmail(email);
-objLoginPage.setPassword(password);
-objLoginPage.buttonLoginClick();
-objMainPage.waitForLoadMainPage();
-String actualResult = objMainPage.getHeaderBurgerText();
-assertEquals(TEXT_HEADER_BURGER, actualResult);
-}
+    @Test
+    public void registerTest() {
+        objRegisterPage.waitForLoadRegisterPage();
+        objRegisterPage.setName(name);
+        objRegisterPage.setEmail(email);
+        objRegisterPage.setPassword(password);
+        objRegisterPage.buttonRegisterClick();
+        objLoginPage.waitForLoadEntrancePage();
+        objLoginPage.setEmail(email);
+        objLoginPage.setPassword(password);
+        objLoginPage.buttonLoginClick();
+        objMainPage.waitForLoadMainPage();
+        String actualResult = objMainPage.getHeaderBurgerText();
+        assertEquals(TEXT_HEADER_BURGER, actualResult);
+    }
 
-@Test
-public void errorMessagePasswordTest(){
+    @Test
+    public void errorMessagePasswordTest() {
         objRegisterPage.waitForLoadRegisterPage();
         password = "12345";
         objRegisterPage.setName(name);
@@ -65,11 +65,11 @@ public void errorMessagePasswordTest(){
         objRegisterPage.waitErrorMessage();
         String actualResult = objRegisterPage.getErrorMessageText();
         assertEquals(TEXT_ERROR_MESSAGE, actualResult);
-}
+    }
 
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 

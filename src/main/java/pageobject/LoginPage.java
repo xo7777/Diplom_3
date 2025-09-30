@@ -27,14 +27,13 @@ public class LoginPage {
 
 
     //Конструктор
-    public LoginPage (WebDriver driver){
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
 
-
     //Ожидание загрузки страницы Входа
-    public void waitForLoadEntrancePage(){
+    public void waitForLoadEntrancePage() {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.visibilityOfElementLocated(headerEntrance));
     }
@@ -52,19 +51,18 @@ public class LoginPage {
 
 
     //Клик по кнопке Войти
-    public void buttonLoginClick(){
+    public void buttonLoginClick() {
         driver.findElement(buttonLogin).click();
     }
 
     //Клик по кнопке "Восстановить пароль" на странице входа
-    public void buttonForgotPasswordClick(){
+    public void buttonForgotPasswordClick() {
         driver.findElement(buttonForgotPassword).click();
     }
 
 
-
     //Авторизация пользователя
-    public void loginUser(String email, String password){
+    public void loginUser(String email, String password) {
 
         waitForLoadEntrancePage();
         setEmail(email);
@@ -72,7 +70,6 @@ public class LoginPage {
         buttonLoginClick();
 
     }
-
 
 
 }

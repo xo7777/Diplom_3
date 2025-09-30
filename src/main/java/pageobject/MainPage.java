@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static constants.Url.BASE_URL;
+
 public class MainPage {
     private WebDriver driver;
 
@@ -17,7 +19,6 @@ public class MainPage {
     //Кнопка "Личный кабинет"
     private By buttonPersonalAccount = By.xpath(".//p[text()='Личный Кабинет']");
 
-
     //Кнопка Булки
     private By buttonBun = By.xpath(".//span[text()='Булки']");
 
@@ -27,108 +28,63 @@ public class MainPage {
     //Кнопка Начинки
     private By buttonFilling = By.xpath(".//span[text()='Начинки']");
 
-
-    //Краторная булка
-    private By craterBun = By.cssSelector("img[alt ='Краторная булка N-200i']");
-
-    //Соус с шипами плоскоходца
-    private By antarianSauce = By.cssSelector("img[alt ='Соус с шипами Антарианского плоскоходца']");
-
-
-    // Биокотлета из марсианской Магнолии
-    private By cutletMartian = By.cssSelector("img[alt ='Биокотлета из марсианской Магнолии']");
-
+    //Локатор выбранного раздела
+    private By activeSection = By.cssSelector(".tab_tab__1SPyG.tab_tab_type_current__2BEPc.pt-4.pr-10.pb-4.pl-10.noselect");
 
 
     //Конструктор
-    public MainPage (WebDriver driver){
+    public MainPage(WebDriver driver) {
         this.driver = driver;
     }
 
-
+    //Вход на главную страницу
+    public void openBurgerSite() {
+        driver.get(BASE_URL);
+    }
 
     //Клик по кнопке "Войти в аккаунт" на главной странице
-    public void buttonLoginMainPageClick(){
+    public void buttonLoginMainPageClick() {
         driver.findElement(buttonLoginMainPage).click();
     }
 
 
     //Клик по кнопке "Личный кабинет" на главной странице
-    public void buttonPersonalAccountClick(){
+    public void buttonPersonalAccountClick() {
         driver.findElement(buttonPersonalAccount).click();
     }
 
     //Клик по кнопке Булки
-    public void buttonBunClick(){
+    public void buttonBunClick() {
         driver.findElement(buttonBun).click();
     }
 
     //Клик по кнопке Соусы
-    public void buttonSauceClick(){
+    public void buttonSauceClick() {
         driver.findElement(buttonSauce).click();
     }
 
     //Клик по кнопке Начинки
-    public void buttonFillingClick(){
+    public void buttonFillingClick() {
         driver.findElement(buttonFilling).click();
     }
 
 
-    //Ожидание кликабельности краторной булки
-    public void waitCraterBun(){
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.elementToBeClickable(craterBun));
-    }
-
-
-    //Ожидание кликабельности Соуса с шипами плоскоходца
-    public void waitAntarianSauce(){
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.elementToBeClickable(antarianSauce));
-    }
-
-
-    //Ожидание кликабельности Биокотлеты из марсианской Магнолии
-    public void waitCutletMartian(){
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.elementToBeClickable(cutletMartian));
-    }
-
-
-    //Клик по краторной булке
-    public void craterBunClick(){
-        driver.findElement(craterBun).click();
-    }
-
-
-    //Клик по Соусу с шипами плоскоходца
-    public void antarianSauceClick(){
-        driver.findElement(antarianSauce).click();
-    }
-
-    //Клик по Биокотлете из марсианской Магнолии
-    public void cutletMartianClick(){
-        driver.findElement(cutletMartian).click();
-    }
-
-
-    //Получение текста имени ингредиента
-    public String getNameOfIngredient(){
-        String text = driver.findElement(By.className("text text_type_main-medium mb-8")).getText();
+    //"Получение текста из активного раздела"
+    public String getTextActiveSection() {
+        String text = driver.findElement(activeSection).getText();
         return text;
     }
 
 
-
     //Ожидание загрузки главной страницы
-    public void waitForLoadMainPage(){
+    public void waitForLoadMainPage() {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.visibilityOfElementLocated(headerBurger));
     }
 
 
     //Получение текста заголовка "Соберите бургер"
-    public String getHeaderBurgerText(){
+    public String getHeaderBurgerText() {
         String text = driver.findElement(headerBurger).getText();
         return text;
     }

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static constants.Url.URL_FORGOT_PASSWORD;
+
 public class ForgotPasswordPage {
     private WebDriver driver;
 
@@ -16,26 +18,28 @@ public class ForgotPasswordPage {
 
 
     //Конструктор
-    public ForgotPasswordPage (WebDriver driver){
+    public ForgotPasswordPage(WebDriver driver) {
         this.driver = driver;
     }
 
 
+    //Вход на страницу восстановления пароля
+    public void openForgotPasswordPage() {
+        driver.get(URL_FORGOT_PASSWORD);
+    }
+
+
     //Клик по кнопке "Войти" на странице "Забыли пароль"
-    public void buttonLoginFromForgotPasswordPageClick(){
+    public void buttonLoginFromForgotPasswordPageClick() {
         driver.findElement(buttonLoginFromForgotPasswordPage).click();
     }
 
 
     //Ожидание загрузки страницы восстановления пароля
-    public void waitForLoadForgotPasswordPage(){
+    public void waitForLoadForgotPasswordPage() {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.visibilityOfElementLocated(headerPasswordRecovery));
     }
-
-
-
-
 
 
 }
