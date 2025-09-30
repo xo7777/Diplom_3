@@ -42,7 +42,8 @@ public class LoginWithDifferentButtonTest {
         userRequest = new UserRequest(email, password, name);
         userCreate = user.createUser(userRequest);
         accessToken = userCreate.jsonPath().getString("accessToken");
-        driver = new ChromeDriver();
+        driver = new YandexBrowser().startYandexBrowser(); //Чтобы использовать Хром эту строку нужно закомментировать
+        //driver = new ChromeDriver(); //Чтобы использовать Хром эту строку нужно раскомментировать
         objLoginPage = new LoginPage(driver);
         objRegisterPage = new RegisterPage(driver);
         objMainPage = new MainPage(driver);

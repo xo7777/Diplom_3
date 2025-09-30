@@ -28,7 +28,8 @@ public class RegisterTest {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
+        driver = new YandexBrowser().startYandexBrowser(); //Чтобы использовать Хром эту строку нужно закомментировать
+        // driver = new ChromeDriver(); //Чтобы использовать Хром эту строку нужно раскомментировать
         dataTestGenerate = new DataTestGenerate();
         name = dataTestGenerate.generateName();
         email = dataTestGenerate.generateEmail();

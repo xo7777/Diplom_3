@@ -17,7 +17,8 @@ public class SelectingSectionTest {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
+        driver = new YandexBrowser().startYandexBrowser(); //Чтобы использовать Хром эту строку нужно закомментировать
+        //driver = new ChromeDriver(); //Чтобы использовать Хром эту строку нужно раскомментировать
         objMainPage = new MainPage(driver);
         objMainPage.openBurgerSite();
         objMainPage.waitForLoadMainPage();
