@@ -8,7 +8,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pageobject.ForgotPasswordPage;
 import pageobject.LoginPage;
 import pageobject.MainPage;
@@ -42,8 +41,8 @@ public class LoginWithDifferentButtonTest {
         userRequest = new UserRequest(email, password, name);
         userCreate = user.createUser(userRequest);
         accessToken = userCreate.jsonPath().getString("accessToken");
-        driver = new YandexBrowser().startYandexBrowser(); //Чтобы использовать Хром эту строку нужно закомментировать
-        //driver = new ChromeDriver(); //Чтобы использовать Хром эту строку нужно раскомментировать
+        DriverFactory driverFactory = new DriverFactory();
+        driver = driverFactory.getDriver("yandex"); //Чтобы использовать chrome измените параметр на "chrome"
         objLoginPage = new LoginPage(driver);
         objRegisterPage = new RegisterPage(driver);
         objMainPage = new MainPage(driver);

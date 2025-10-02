@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pageobject.MainPage;
 
 import static constants.ExpectedResult.*;
@@ -17,8 +16,8 @@ public class SelectingSectionTest {
 
     @Before
     public void setUp() {
-        driver = new YandexBrowser().startYandexBrowser(); //Чтобы использовать Хром эту строку нужно закомментировать
-        //driver = new ChromeDriver(); //Чтобы использовать Хром эту строку нужно раскомментировать
+        DriverFactory driverFactory = new DriverFactory();
+        driver = driverFactory.getDriver("yandex"); //Чтобы использовать chrome измените параметр на "chrome"
         objMainPage = new MainPage(driver);
         objMainPage.openBurgerSite();
         objMainPage.waitForLoadMainPage();
