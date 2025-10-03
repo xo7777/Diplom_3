@@ -28,7 +28,7 @@ public class RegisterTest {
     @Before
     public void setUp() {
         DriverFactory driverFactory = new DriverFactory();
-        driver = driverFactory.getDriver("yandex"); //Чтобы использовать chrome измените параметр на "chrome"
+        driver = driverFactory.getDriver();
         dataTestGenerate = new DataTestGenerate();
         name = dataTestGenerate.generateName();
         email = dataTestGenerate.generateEmail();

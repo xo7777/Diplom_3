@@ -42,7 +42,7 @@ public class LoginWithDifferentButtonTest {
         userCreate = user.createUser(userRequest);
         accessToken = userCreate.jsonPath().getString("accessToken");
         DriverFactory driverFactory = new DriverFactory();
-        driver = driverFactory.getDriver("yandex"); //Чтобы использовать chrome измените параметр на "chrome"
+        driver = driverFactory.getDriver();
         objLoginPage = new LoginPage(driver);
         objRegisterPage = new RegisterPage(driver);
         objMainPage = new MainPage(driver);

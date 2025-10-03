@@ -2,8 +2,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.FileInputStream;
+import java.util.Properties;
+
 public class DriverFactory {
-    public WebDriver getDriver(String browserName) {
+    public WebDriver getDriver() {
+        Properties props = new Properties();
+        try {
+            props.load(new FileInputStream("src/test/resources/config.properties"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String browserName = props.getProperty("browser","chrome"); // По умолчанию chrome
+
         if ("chrome".equalsIgnoreCase(browserName)) {
             return new ChromeDriver();
         } else if ("yandex".equalsIgnoreCase(browserName)) {

@@ -55,6 +55,12 @@ public class MainPage {
         driver.findElement(buttonSauce).click();
     }
 
+    @Step ("Ожидание выбора раздела Булки")
+    public void waitForLoadBunSection() {
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.textToBePresentInElementLocated(activeSection,"Булки"));
+    }
+
     @Step ("Клик по кнопке Начинки")
     public void buttonFillingClick() {
         driver.findElement(buttonFilling).click();

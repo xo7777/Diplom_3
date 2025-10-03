@@ -17,7 +17,7 @@ public class SelectingSectionTest {
     @Before
     public void setUp() {
         DriverFactory driverFactory = new DriverFactory();
-        driver = driverFactory.getDriver("yandex"); //Чтобы использовать chrome измените параметр на "chrome"
+        driver = driverFactory.getDriver();
         objMainPage = new MainPage(driver);
         objMainPage.openBurgerSite();
         objMainPage.waitForLoadMainPage();
@@ -29,6 +29,7 @@ public class SelectingSectionTest {
     public void selectBunTest() {
         objMainPage.buttonFillingClick();
         objMainPage.buttonBunClick();
+        objMainPage.waitForLoadBunSection();
         String actualResult = objMainPage.getTextActiveSection();
         assertEquals(NAME_BUN, actualResult);
     }
